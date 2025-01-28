@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const MainNav = () => {
@@ -16,7 +15,9 @@ const MainNav = () => {
       <nav className="navbar bg-body-tertiary">
         <div className="container-fluid">
           <a className="navbar-brand">BOOLFLIX</a>
-          <form className="d-flex" role="search"
+          <form
+            className="d-flex"
+            role="search"
             onSubmit={handleSubmit}>
             <input
               className="form-control me-2"

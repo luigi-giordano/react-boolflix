@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { GlobalProvider } from "./context/GlobalContext"
 
-import DefaultLayout from "./layouts/DefaultLayout"
+import DefaultLayout from "./layout/DefaultLayout"
 import HomePage from "./componets/HomePage"
-import MovieCards from "./componets/MovieCards"
 
 const App = () => {
   return (

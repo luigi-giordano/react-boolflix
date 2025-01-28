@@ -13,7 +13,7 @@ const MovieCards = ({ movie }) => {
         <ul className="list-group list-group-flush">
           <li className="list-group-item">{movie.original_title}</li>
           <li className="list-group-item">
-            <img src={selectFlag(movie.original_language) || } alt="" />{/*<img src={movie.original_language == 'en' ? 'https://flagcdn.com/h40/gb-eng.png' : `https://flagsapi.com/${movie.original_language.toUpperCase()}/shiny/64.png`} alt={movie.original_language} />*/}</li>
+            <img src={selectFlag(movie.original_language) || } alt="" /></li>
           <li className="list-group-item">{movie.vote_average}</li>
         </ul>
       </div>
