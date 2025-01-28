@@ -6,9 +6,13 @@ const MainNav = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(userTitle)
-    fetchData()
-  }
+    if (!userTitle.trim()) {
+      console.log("Inserisci un titolo valido.");
+      return;
+    }
+    fetchData();
+  };
+
 
   return (
     <>
