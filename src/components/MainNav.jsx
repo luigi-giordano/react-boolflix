@@ -26,7 +26,7 @@ const MainNav = () => {
             <input
               className="form-control me-2"
               type="search"
-              placeholder="Cerca per titolo"
+              placeholder="Cerca un titolo"
               aria-label="Search"
               value={userTitle}
               onChange={handleInput}

@@ -6,14 +6,14 @@ const MovieCards = ({ movie }) => {
 
   return (
     <>
-      <div className="card">
-        <div className="card-header">
+      <div className="main-card">
+        <div className="card-title">
           {movie.title}
         </div>
         <ul className="list-group list-group-flush">
           <img
-            src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-            alt={`${movie.title} backdrop`}
+            src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+            alt={`${movie.title} poster`}
             style={{ width: '100%' }}
           />
           <li className="list-group-item">{movie.title}</li>
