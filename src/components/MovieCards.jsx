@@ -4,6 +4,14 @@ const MovieCards = ({ movie, tv }) => {
 
   const { languageFlag } = useGlobalContext()
 
+  function getLanguageFlag() {
+
+    return (movie) ?
+      (languageFlag(movie?.original_language) || `https://flagsapi.com/${movie?.original_language.toUpperCase()}/shiny/64.png`) :
+      (languageFlag(tv?.original_language) || `https://flagsapi.com/${tv?.original_language.toUpperCase()}/shiny/64.png`)
+
+  }
+
   return (
     <>
       <div className="main-card">

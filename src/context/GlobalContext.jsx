@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "axios";
 
 const GlobalContext = createContext();
@@ -68,6 +68,7 @@ const GlobalProvider = ({ children }) => {
     userTitle,
     setUserTitle,
     movieList,
+    tvList,
     setMovieList,
     languageFlag
   }

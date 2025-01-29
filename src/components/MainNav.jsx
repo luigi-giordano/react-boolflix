@@ -2,7 +2,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 
 const MainNav = () => {
 
-  const { fetchData, userTitle, handleInput } = useGlobalContext()
+  const { fetchData, userTitle = '', handleInput } = useGlobalContext()
 
   const handleSubmit = (e) => {
     e.preventDefault();
