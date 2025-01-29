@@ -9,12 +9,13 @@ const GlobalProvider = ({ children }) => {
 
   const apiKey = '2a7e9b2ebf0e92e6caa20a527e067184'
   const apiUrlMovie = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`
-  const apiUrlTv = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&language=it_IT&query=`
+  const apiUrlTv = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=`
 
   const [movieList, setMovieList] = useState([])
+  const [tvList, setTvList] = useState([])
   const [userTitle, setUserTitle] = useState('')
 
-  function selectFlag(language) {
+  function languageFlag(language) {
     if (language == 'en') {
       return 'https://flagsapi.com/GB/flat/64.png'
     }
@@ -46,6 +47,14 @@ const GlobalProvider = ({ children }) => {
       .catch(err => {
         console.log('Errore', err);
       })
+
+    axios.get(apiUrlTv + userTitle)
+      .then(res => {
+        setTvList(res.data.results)
+      })
+      .catch(err => {
+        console.log('Errore', err);
+      })
   }
 
   const handleInput = (e) => {
@@ -60,7 +69,7 @@ const GlobalProvider = ({ children }) => {
     setUserTitle,
     movieList,
     setMovieList,
-    selectFlag
+    languageFlag
   }
 
   return (
