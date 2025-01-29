@@ -24,7 +24,7 @@ const MovieCards = ({ movie, tv }) => {
     return stars;
   };
 
-  const placeholderImage = '/img.svg'; // Percorso relativo alla cartella public
+  const placeholderImage = '/placeholder.png'; // Percorso relativo alla cartella public
   const backgroundImage = movie?.poster_path || tv?.poster_path
     ? `url(https://image.tmdb.org/t/p/w342${movie?.poster_path || tv?.poster_path})`
     : `url(${placeholderImage})`;
@@ -39,6 +39,11 @@ const MovieCards = ({ movie, tv }) => {
     >
       {isHovered && (
         <div className="overlay">
+          <img
+            src={getLanguageFlag()}
+            alt="Language flag"
+            className="language-icon"
+          />
           <div className="overlay-content">
             <h5 className="card-title">{movie?.title || tv?.original_title || 'N/A'}</h5>
             <p className="card-text">Rating: {renderStars(rating)}</p>
