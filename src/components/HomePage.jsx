@@ -20,7 +20,7 @@ const HomePage = () => {
       <div className="row">
         {tvList.length > 0 && tvList.map(tv => (
           <div className="col-md-3 mb-4" key={tv.id}>
-            <MovieCards movie={tv} />
+            <MovieCards tv={tv} />
           </div>
         ))}
       </div>

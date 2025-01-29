@@ -1,8 +1,7 @@
 import { useGlobalContext } from "../context/GlobalContext";
 
 const MainNav = () => {
-
-  const { fetchData, userTitle = '', handleInput } = useGlobalContext()
+  const { fetchData, userTitle = '', handleInput } = useGlobalContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,16 +12,14 @@ const MainNav = () => {
     fetchData();
   };
 
-
   return (
     <>
-      <nav className="navbar bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg navbar-light bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand">BOOLFLIX</a>
-          <form
-            className="d-flex"
-            role="search"
-            onSubmit={handleSubmit}>
+          <a className="navbar-brand" href="#">
+            <img src="/logo.png" alt="BOOLFLIX" style={{ maxWidth: '150px', height: 'auto' }} />
+          </a>
+          <form className="d-flex" role="search" onSubmit={handleSubmit}>
             <input
               className="form-control me-2"
               type="search"
@@ -31,16 +28,14 @@ const MainNav = () => {
               value={userTitle}
               onChange={handleInput}
             />
-            <button
-              className="btn btn-outline-success">
-              <i
-                className="fa-brands fa-searchengin fa-lg"></i>
+            <button className="btn btn-outline-success" type="submit">
+              <i className="fa-brands fa-searchengin fa-lg"></i>
             </button>
           </form>
         </div>
-      </nav >
+      </nav>
     </>
-  )
-}
+  );
+};
 
 export default MainNav;
