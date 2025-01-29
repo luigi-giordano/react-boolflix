@@ -1,21 +1,37 @@
+body {
+  background-color: #25282c !important;
+  /* Grigio scuro per tutto il background del body */
+  color: #fff !important;
+  /* Colore del testo bianco per migliorare la leggibilità */
+}
+
+h2 {
+  text-align: center;
+  margin: 20px 0;
+  color: #eee5e5;
+}
+
+.cards-container {
+  background-color: #343a40;
+  padding: 20px;
+  border-radius: 8px;
+}
+
 .result-card {
   width: 100%;
-  height: 330px;
-  /* Mantieni l'altezza */
+  height: 400px;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   border-radius: 8px;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s;
+  transition: transform 0.3s;
   cursor: pointer;
-  /* Aggiungi questa linea per far apparire la mano */
 }
 
 .result-card:hover {
   transform: scale(1.05);
-  height: 480px;
-  /* Aumenta l'altezza al passaggio del mouse */
 }
 
 .overlay {
@@ -30,23 +46,19 @@
   width: 100%;
   height: 100%;
   padding: 10px;
-  box-sizing: border-box;
   transition: all 0.3s ease;
   opacity: 0;
   overflow-y: auto;
-  /* Aggiungi scroll verticale */
-}
-
-.overlay-content {
-  max-height: 100%;
-  /* Limita l'altezza del contenuto per permettere lo scroll */
-  overflow-y: auto;
-  text-align: center;
-  /* Centra il testo orizzontalmente */
 }
 
 .result-card:hover .overlay {
   opacity: 1;
+}
+
+.overlay-content {
+  max-height: 100%;
+  overflow-y: auto;
+  text-align: center;
 }
 
 .no-image {
@@ -54,14 +66,5 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #fff;
   font-size: 1.5em;
-}
-
-h2 {
-  text-align: center;
-  margin: 20px 0;
-  /* Aggiungi un po' di margine sopra e sotto il titolo */
-  color: #333;
-  /* Colore del testo */
 }

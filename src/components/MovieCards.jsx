@@ -5,13 +5,18 @@ const MovieCards = ({ movie, tv }) => {
   const { languageFlag } = useGlobalContext();
   const [isHovered, setIsHovered] = useState(false);
 
+  // Determina se è un film o una serie TV
+  const item = movie || tv;
+
+  // Se l'elemento non esiste, non renderizzarlo
+  if (!item) return null;
+
   function getLanguageFlag() {
-    return (movie) ?
-      (languageFlag(movie?.original_language) || `https://flagsapi.com/${movie?.original_language.toUpperCase()}/shiny/64.png`) :
-      (languageFlag(tv?.original_language) || `https://flagsapi.com/${tv?.original_language.toUpperCase()}/shiny/64.png`);
+    return languageFlag(item?.original_language) ||
+      `https://flagsapi.com/${item?.original_language?.toUpperCase()}/shiny/64.png`;
   }
 
-  const rating = movie ? Math.ceil((movie.vote_average || 0) / 2) : Math.ceil((tv.vote_average || 0) / 2);
+  const rating = Math.ceil((item.vote_average || 0) / 2);
 
   const renderStars = (rating) => {
     const stars = [];
@@ -24,9 +29,10 @@ const MovieCards = ({ movie, tv }) => {
     return stars;
   };
 
-  const placeholderImage = '/placeholder.png'; // Percorso relativo alla cartella public
-  const backgroundImage = movie?.poster_path || tv?.poster_path
-    ? `url(https://image.tmdb.org/t/p/w342${movie?.poster_path || tv?.poster_path})`
+  // Usa un'immagine di placeholder se non c'è poster_path
+  const placeholderImage = '/img.svg';
+  const backgroundImage = item.poster_path
+    ? `url(https://image.tmdb.org/t/p/w342${item.poster_path})`
     : `url(${placeholderImage})`;
 
   return (
@@ -45,9 +51,9 @@ const MovieCards = ({ movie, tv }) => {
             className="language-icon"
           />
           <div className="overlay-content">
-            <h5 className="card-title">{movie?.title || tv?.original_title || 'N/A'}</h5>
+            <h5 className="card-title">{item.title || item.name || 'N/A'}</h5>
             <p className="card-text">Rating: {renderStars(rating)}</p>
-            <p className="card-text">{movie?.overview || tv?.overview || 'N/A'}</p>
+            <p className="card-text">{item.overview || 'N/A'}</p>
           </div>
         </div>
       )}

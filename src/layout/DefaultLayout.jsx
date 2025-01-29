@@ -4,10 +4,10 @@ import { Outlet } from "react-router-dom";
 const DefaultLayout = () => {
   return (
     <>
-      <header>
+      <header className="bg-dark text-light">
         <MainNav></MainNav>
       </header>
-      <main className="my-5">
+      <main className="bg-dark">
         <Outlet />
       </main>
     </>

@@ -14,9 +14,9 @@ const MainNav = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             <img src="/logo.png" alt="BOOLFLIX" style={{ maxWidth: '150px', height: 'auto' }} />
           </a>
           <form className="d-flex" role="search" onSubmit={handleSubmit}>
