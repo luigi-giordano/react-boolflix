@@ -1,7 +1,9 @@
 import { useGlobalContext } from "../context/GlobalContext";
+import { useState } from "react";
 
 const MovieCards = ({ movie, tv }) => {
   const { languageFlag } = useGlobalContext();
+  const [isHovered, setIsHovered] = useState(false);
 
   function getLanguageFlag() {
     return (movie) ?
@@ -25,21 +27,23 @@ const MovieCards = ({ movie, tv }) => {
   };
 
   return (
-    <div className="card h-100">
-      <img
-        src={movie ? `https://image.tmdb.org/t/p/w342${movie.poster_path}` : `https://image.tmdb.org/t/p/w342${tv.poster_path}`}
-        className="card-img-top"
-        alt={`${movie?.title || tv?.name} poster`}
-      />
-      <div className="card-body">
-        <h5 className="card-title">{movie?.title || tv?.original_title || 'N/A'}</h5>
-        <p className="card-text">{movie?.overview || tv?.overview || 'N/A'}</p>
-        <p className="card-text">Rating: {renderStars(rating)}</p>
-      </div>
-      <div className="card-footer">
-        <small className="text-muted">
-          <img src={getLanguageFlag()} alt="Language flag" style={{ height: '20px', width: '20px' }} /> {movie?.original_language || tv?.original_language || 'N/A'}
-        </small>
+    <div className="results-container">
+
+      <div
+        className="result-card"
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/w342${movie?.poster_path || tv?.poster_path})`
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {isHovered && (
+          <div className="overlay">
+            <h5 className="card-title">{movie?.title || tv?.original_title || 'N/A'}</h5>
+            <p className="card-text">Rating: {movie?.vote_average || tv?.vote_average || 'N/A'}</p>
+            <p className="card-text">{movie?.overview || tv?.overview || 'N/A'}</p>
+          </div>
+        )}
       </div>
     </div>
   );

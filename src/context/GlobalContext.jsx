@@ -15,6 +15,28 @@ const GlobalProvider = ({ children }) => {
   const [tvList, setTvList] = useState([])
   const [userTitle, setUserTitle] = useState('')
 
+  const fetchData = () => {
+    axios.get(apiUrlMovie + userTitle)
+      .then(res => {
+        setMovieList(res.data.results)
+      })
+      .catch(err => {
+        console.log('Errore', err);
+      })
+
+    axios.get(apiUrlTv + userTitle)
+      .then(res => {
+        setTvList(res.data.results)
+      })
+      .catch(err => {
+        console.log('Errore', err);
+      })
+  }
+
+  const handleInput = (e) => {
+    setUserTitle(e.target.value)
+  }
+
   function languageFlag(language) {
     if (language == 'en') {
       return 'https://flagsapi.com/GB/flat/64.png'
@@ -39,37 +61,15 @@ const GlobalProvider = ({ children }) => {
     }
   }
 
-  const fetchData = () => {
-    axios.get(apiUrlMovie + userTitle)
-      .then(res => {
-        setMovieList(res.data.results)
-      })
-      .catch(err => {
-        console.log('Errore', err);
-      })
-
-    axios.get(apiUrlTv + userTitle)
-      .then(res => {
-        setTvList(res.data.results)
-      })
-      .catch(err => {
-        console.log('Errore', err);
-      })
-  }
-
-  const handleInput = (e) => {
-    setUserTitle(e.target.value)
-  }
-
-
   const value = {
     fetchData,
     handleInput,
     userTitle,
     setUserTitle,
     movieList,
-    tvList,
     setMovieList,
+    tvList,
+    setTvList,
     languageFlag
   }
 
@@ -79,6 +79,5 @@ const GlobalProvider = ({ children }) => {
     </GlobalContext.Provider>
   )
 }
-
 
 export { useGlobalContext, GlobalProvider }
