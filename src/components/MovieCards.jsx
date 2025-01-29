@@ -12,6 +12,9 @@ const MovieCards = ({ movie, tv }) => {
 
   }
 
+  // Trasforma il voto da 1-10 in un voto da 1-5, arrotondando sempre per eccesso
+  const rating = Math.ceil(movie.vote_average / 2);
+
   return (
     <>
       <div className="main-card">
@@ -28,6 +31,7 @@ const MovieCards = ({ movie, tv }) => {
             <img src={languageFlag(movie.original_language)} alt="Language flag" />
           </li>
           <li className="list-group-item">{movie?.vote_average || tv?.vote_average}</li>
+          <p className="card-text">Rating: {rating} / 5</p>
         </ul>
       </div>
     </>
