@@ -12,6 +12,18 @@ const MovieCards = ({ movie, tv }) => {
   // Trasforma il voto da 1-10 in un voto da 1-5, arrotondando sempre per eccesso
   const rating = movie ? Math.ceil((movie.vote_average || 0) / 2) : Math.ceil((tv.vote_average || 0) / 2);
 
+  // Funzione per generare le stelle piene e vuote
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 0; i < rating; i++) {
+      stars.push(<i key={i} className="fas fa-star"></i>);
+    }
+    for (let i = rating; i < 5; i++) {
+      stars.push(<i key={i} className="far fa-star"></i>);
+    }
+    return stars;
+  };
+
   return (
     <div className="card h-100">
       <img
@@ -22,7 +34,7 @@ const MovieCards = ({ movie, tv }) => {
       <div className="card-body">
         <h5 className="card-title">{movie?.title || tv?.original_title || 'N/A'}</h5>
         <p className="card-text">{movie?.overview || tv?.overview || 'N/A'}</p>
-        <p className="card-text">Rating: {rating} / 5</p>
+        <p className="card-text">Rating: {renderStars(rating)}</p>
       </div>
       <div className="card-footer">
         <small className="text-muted">
